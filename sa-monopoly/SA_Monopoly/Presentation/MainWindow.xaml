@@ -1,0 +1,2597 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	x:Class="SA_Monopoly.MainWindow"
+	x:Name="Window"
+	Title="TTQ Monopoly Game"
+	Width="1000" Height="720" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="16" Closed="Window_Closed" Icon="imgs/monopoly.ico" Loaded="Window_Loaded">
+	<Window.Resources>
+		
+		<Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualStateGroup.Transitions>
+										<VisualTransition GeneratedDuration="0:0:0.1"/>
+									</VisualStateGroup.Transitions>
+									<VisualState x:Name="Normal">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="contentPresenter">
+												<DiscreteObjectKeyFrame KeyTime="0">
+													<DiscreteObjectKeyFrame.Value>
+														<Cursor>Hand</Cursor>
+													</DiscreteObjectKeyFrame.Value>
+												</DiscreteObjectKeyFrame>
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="rectangle">
+												<DiscreteObjectKeyFrame KeyTime="0">
+													<DiscreteObjectKeyFrame.Value>
+														<Cursor>Hand</Cursor>
+													</DiscreteObjectKeyFrame.Value>
+												</DiscreteObjectKeyFrame>
+											</ObjectAnimationUsingKeyFrames>
+											<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+												<EasingDoubleKeyFrame KeyTime="0" Value="0.895"/>
+											</DoubleAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="MouseOver">
+										<Storyboard>
+											<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+												<EasingColorKeyFrame KeyTime="0" Value="#FFDAF106"/>
+											</ColorAnimationUsingKeyFrames>
+											<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+												<EasingColorKeyFrame KeyTime="0" Value="#FF1C6004"/>
+											</ColorAnimationUsingKeyFrames>
+											<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+												<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+											</DoubleAnimationUsingKeyFrames>
+											<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="contentPresenter">
+												<EasingDoubleKeyFrame KeyTime="0" Value="-1"/>
+											</DoubleAnimationUsingKeyFrames>
+											<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="contentPresenter">
+												<EasingDoubleKeyFrame KeyTime="0" Value="-1"/>
+											</DoubleAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="rectangle">
+												<DiscreteObjectKeyFrame KeyTime="0">
+													<DiscreteObjectKeyFrame.Value>
+														<Cursor>Hand</Cursor>
+													</DiscreteObjectKeyFrame.Value>
+												</DiscreteObjectKeyFrame>
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="contentPresenter">
+												<DiscreteObjectKeyFrame KeyTime="0">
+													<DiscreteObjectKeyFrame.Value>
+														<Cursor>Hand</Cursor>
+													</DiscreteObjectKeyFrame.Value>
+												</DiscreteObjectKeyFrame>
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="rectangle">
+												<DiscreteObjectKeyFrame KeyTime="0">
+													<DiscreteObjectKeyFrame.Value>
+														<Cursor>Hand</Cursor>
+													</DiscreteObjectKeyFrame.Value>
+												</DiscreteObjectKeyFrame>
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="contentPresenter">
+												<DiscreteObjectKeyFrame KeyTime="0">
+													<DiscreteObjectKeyFrame.Value>
+														<Cursor>Hand</Cursor>
+													</DiscreteObjectKeyFrame.Value>
+												</DiscreteObjectKeyFrame>
+											</ObjectAnimationUsingKeyFrames>
+											<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+												<EasingColorKeyFrame KeyTime="0" Value="#FF1F0CAF"/>
+											</ColorAnimationUsingKeyFrames>
+											<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+												<EasingColorKeyFrame KeyTime="0" Value="#FF2DA4FF"/>
+											</ColorAnimationUsingKeyFrames>
+											<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+												<EasingColorKeyFrame KeyTime="0" Value="#FF076062"/>
+											</ColorAnimationUsingKeyFrames>
+											<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+												<EasingDoubleKeyFrame KeyTime="0" Value="0.945"/>
+											</DoubleAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Disabled">
+										<Storyboard>
+											<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+												<EasingColorKeyFrame KeyTime="0" Value="#FF4B4646"/>
+											</ColorAnimationUsingKeyFrames>
+											<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+												<EasingColorKeyFrame KeyTime="0" Value="#FF060401"/>
+											</ColorAnimationUsingKeyFrames>
+											<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+												<EasingColorKeyFrame KeyTime="0" Value="#FF040403"/>
+											</ColorAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Rectangle x:Name="rectangle" Opacity="0.85" RadiusY="5" RadiusX="5" Stroke="#FFC49410" StrokeThickness="2">
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FFE5A71F" Offset="0"/>
+										<GradientStop Color="#FFDC0D0D" Offset="1"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<ContentPresenter x:Name="contentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RenderTransformOrigin="0.5,0.5">
+								<ContentPresenter.OpacityMask>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="Black" Offset="0"/>
+										<GradientStop Color="White" Offset="1"/>
+									</LinearGradientBrush>
+								</ContentPresenter.OpacityMask>
+								<ContentPresenter.RenderTransform>
+									<TransformGroup>
+										<ScaleTransform/>
+										<SkewTransform/>
+										<RotateTransform/>
+										<TranslateTransform/>
+									</TransformGroup>
+								</ContentPresenter.RenderTransform>
+							</ContentPresenter>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		
+	</Window.Resources>
+
+	<Grid x:Name="LayoutRoot">
+		<Grid.Background>
+			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+				<GradientStop Color="#FF5784BB" Offset="0"/>
+				<GradientStop Color="#FF041B3D" Offset="1"/>
+			</LinearGradientBrush>
+		</Grid.Background>		
+		
+		<Image Source="imgs/mainMenuBG.png" Stretch="Fill" RenderTransformOrigin="0.32,0.458"/>		
+		
+		<Image x:Name="gameBoard" Margin="-1.25,0,345.25,42" Source="imgs/board_monopoly.png" Stretch="Fill" Height="650" Width="650"/>
+		<Button x:Name="btnMenu" Content="Menu" HorizontalAlignment="Left" Height="38" Margin="2,0,0,2" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Bottom" Width="98" Foreground="#FFEDDDDD" FontSize="18.667" FontFamily="Comic Sans MS" Cursor="Hand" Click="btnMenu_Click" />
+		<Button x:Name="btnBuild" Content="Build" HorizontalAlignment="Left" Height="38" Margin="104,0,0,2" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Bottom" Width="98" Foreground="#FFEDDDDD" FontSize="18.667" FontFamily="Comic Sans MS" Cursor="Hand" Click="btnBuild_Click" />
+		<Button x:Name="btnSell" Content="Sell" HorizontalAlignment="Left" Height="38" Margin="206,0,0,2" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Bottom" Width="98" Foreground="#FFEDDDDD" FontSize="18.667" FontFamily="Comic Sans MS" Cursor="Hand" Click="btnSell_Click" />
+		<Button x:Name="btnMortgage" Content="Mortgage" HorizontalAlignment="Left" Height="38" Margin="308,0,0,2" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Bottom" Width="121" Foreground="#FFEDDDDD" FontSize="18.667" FontFamily="Comic Sans MS" Cursor="Hand" Click="btnMortgage_Click" />
+		<Button x:Name="btnUnmortgage" Content="Unmortgage" Height="38" Margin="433,0,440,2" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Bottom" Foreground="#FFEDDDDD" FontSize="18.667" FontFamily="Comic Sans MS" Cursor="Hand" Click="btnUnmortgage_Click" />
+		<Button x:Name="btnTrade" Content="Trade" HorizontalAlignment="Right" Height="38" Margin="0,0,338,2" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Bottom" Width="98" Foreground="#FFEDDDDD" FontSize="18.667" FontFamily="Comic Sans MS" Cursor="Hand" Click="btnTrade_Click" />
+		<Grid HorizontalAlignment="Right" Height="85" Margin="0,0,434.25,49.667" VerticalAlignment="Bottom" Width="52"/>
+		<Grid HorizontalAlignment="Right" Height="85" Margin="0,0,349.25,49.667" VerticalAlignment="Bottom" Width="85"/>
+		<Canvas x:Name="player1" HorizontalAlignment="Right" Height="102" Margin="0,8,8,0" VerticalAlignment="Top" Width="326">
+			<Rectangle Height="102" RadiusY="10" RadiusX="10" Stroke="#FF490650" StrokeThickness="5" Width="326" Opacity="0.495">
+				<Rectangle.Fill>
+					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+						<GradientStop Color="#FFC20FA3" Offset="0"/>
+						<GradientStop Color="#FF500046" Offset="1"/>
+					</LinearGradientBrush>
+				</Rectangle.Fill>
+			</Rectangle>
+			<TextBlock Height="34" Canvas.Left="105.5" TextWrapping="Wrap" Text="Player 1" Canvas.Top="8" Width="113.5" FontSize="24" FontFamily="Comic Sans MS" Foreground="White"/>
+			<TextBlock x:Name="txtPlayer1Money" Height="34" Canvas.Left="105.5" TextWrapping="Wrap" Text="$0" Canvas.Top="46" Width="203.5" FontSize="24" FontFamily="Comic Sans MS" Foreground="White"/>
+			<Rectangle x:Name="player1TokenColor" Height="86" Canvas.Left="8" RadiusY="10" RadiusX="10" Stroke="#FF490650" StrokeThickness="5" Width="77" Canvas.Top="8" Fill="Red" Opacity="0.8"/>
+		</Canvas>
+		<Canvas x:Name="player2" HorizontalAlignment="Right" Height="102" Margin="0,114,8,0" VerticalAlignment="Top" Width="326">
+			<Rectangle Height="102" RadiusY="10" RadiusX="10" Stroke="#FF490650" StrokeThickness="5" Width="326" Opacity="0.495">
+				<Rectangle.Fill>
+					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+						<GradientStop Color="#FFC20FA3" Offset="0"/>
+						<GradientStop Color="#FF500046" Offset="1"/>
+					</LinearGradientBrush>
+				</Rectangle.Fill>
+			</Rectangle>
+			<TextBlock Height="34" Canvas.Left="105.5" TextWrapping="Wrap" Text="Player 2" Canvas.Top="8" Width="113.5" FontSize="24" FontFamily="Comic Sans MS" Foreground="White"/>
+			<TextBlock x:Name="txtPlayer2Money" Height="34" Canvas.Left="105.5" TextWrapping="Wrap" Text="$0" Canvas.Top="46" Width="203.5" FontSize="24" FontFamily="Comic Sans MS" Foreground="White"/>
+			<Rectangle x:Name="player2TokenColor" Height="86" Canvas.Left="8" RadiusY="10" RadiusX="10" Stroke="#FF490650" StrokeThickness="5" Width="77" Canvas.Top="8" Fill="#FF08FD00" Opacity="0.8"/>
+		</Canvas>
+		<Canvas x:Name="player3" HorizontalAlignment="Right" Height="102" Margin="0,220,8,0" VerticalAlignment="Top" Width="326">
+			<Rectangle Height="102" RadiusY="10" RadiusX="10" Stroke="#FF490650" StrokeThickness="5" Width="326" Opacity="0.495">
+				<Rectangle.Fill>
+					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+						<GradientStop Color="#FFC20FA3" Offset="0"/>
+						<GradientStop Color="#FF500046" Offset="1"/>
+					</LinearGradientBrush>
+				</Rectangle.Fill>
+			</Rectangle>
+			<TextBlock Height="34" Canvas.Left="105.5" TextWrapping="Wrap" Text="Player 3" Canvas.Top="8" Width="113.5" FontSize="24" FontFamily="Comic Sans MS" Foreground="White"/>
+			<TextBlock x:Name="txtPlayer3Money" Height="34" Canvas.Left="105.5" TextWrapping="Wrap" Text="$0" Canvas.Top="46" Width="203.5" FontSize="24" FontFamily="Comic Sans MS" Foreground="White"/>
+			<Rectangle x:Name="player3TokenColor" Height="86" Canvas.Left="8" RadiusY="10" RadiusX="10" Stroke="#FF490650" StrokeThickness="5" Width="77" Canvas.Top="8" Fill="#FF5800FB" Opacity="0.8"/>
+		</Canvas>
+		<Canvas x:Name="player4" HorizontalAlignment="Right" Margin="0,326,8,264" Width="326">
+			<Rectangle Height="102" RadiusY="10" RadiusX="10" Stroke="#FF490650" StrokeThickness="5" Width="326" Opacity="0.495">
+				<Rectangle.Fill>
+					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+						<GradientStop Color="#FFC20FA3" Offset="0"/>
+						<GradientStop Color="#FF500046" Offset="1"/>
+					</LinearGradientBrush>
+				</Rectangle.Fill>
+			</Rectangle>
+			<TextBlock Height="34" Canvas.Left="105.5" TextWrapping="Wrap" Text="Player 4" Canvas.Top="8" Width="113.5" FontSize="24" FontFamily="Comic Sans MS" Foreground="White"/>
+			<TextBlock x:Name="txtPlayer4Money" Height="34" Canvas.Left="105.5" TextWrapping="Wrap" Text="$0" Canvas.Top="46" Width="203.5" FontSize="24" FontFamily="Comic Sans MS" Foreground="White"/>
+			<Rectangle x:Name="player4TokenColor" Height="86" Canvas.Left="8" RadiusY="10" RadiusX="10" Stroke="#FF490650" StrokeThickness="5" Width="77" Canvas.Top="8" Fill="#FF0AF7F2" Opacity="0.8"/>
+		</Canvas>
+		<Grid x:Name="grdGameBoard" Margin="-1.25,0,345.25,42" Width="650" Height="650">
+			<TextBlock HorizontalAlignment="Right" Height="23.333" Margin="0,0,92.416,0" TextWrapping="Wrap" Text="$60,000" VerticalAlignment="Bottom" Width="52" FontSize="10.667" TextAlignment="Center"/>
+			<TextBlock HorizontalAlignment="Right" Height="23.333" Margin="0,0,196.417,0" TextWrapping="Wrap" Text="$60,000" VerticalAlignment="Bottom" Width="52" FontSize="10.667" TextAlignment="Center"/>
+			<TextBlock HorizontalAlignment="Right" Height="41" Margin="0,0,248.417,0" TextWrapping="Wrap" Text="Pay 10% or $200K" VerticalAlignment="Bottom" Width="52" FontSize="10.667" TextAlignment="Center"/>
+			<TextBlock Height="23.333" Margin="295.333,0,293.417,0" TextWrapping="Wrap" Text="$200,000" VerticalAlignment="Bottom" FontSize="10.667" TextAlignment="Center"/>
+			<TextBlock Height="23.333" Margin="248.333,0,0,0" TextWrapping="Wrap" Text="$100,000" VerticalAlignment="Bottom" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Left" Width="52"/>
+			<TextBlock Height="23.333" Margin="142,0,0,0" TextWrapping="Wrap" Text="$100,000" VerticalAlignment="Bottom" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Left" Width="52"/>
+			<TextBlock Height="23.333" Margin="90,0,0,0" TextWrapping="Wrap" Text="$120,000" VerticalAlignment="Bottom" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Left" Width="52"/>
+			<TextBlock Height="23.333" Margin="-12.333,0,0,105.5" TextWrapping="Wrap" Text="$140,000" VerticalAlignment="Bottom" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Left" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="89.63"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="45.834,0,0,158.667" TextWrapping="Wrap" Text="$150,000" VerticalAlignment="Bottom" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Left" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="89.63"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="-13.833,0,0,210.667" TextWrapping="Wrap" Text="$140,000" VerticalAlignment="Bottom" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Left" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="89.63"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="-14.333,0,0,261.667" TextWrapping="Wrap" Text="$160,000" VerticalAlignment="Bottom" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Left" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="89.63"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Margin="-13.333,305.667,0,305.333" TextWrapping="Wrap" Text="$200,000" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Left" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="90.251"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="-14.5,261.5,0,0" TextWrapping="Wrap" Text="$180,000" VerticalAlignment="Top" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Left" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="89.63"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="-13.333,158.5,0,0" TextWrapping="Wrap" Text="$180,000" VerticalAlignment="Top" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Left" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="89.63"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="-14,106.5,0,0" TextWrapping="Wrap" Text="$200,000" VerticalAlignment="Top" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Left" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="89.63"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="92,1,0,0" TextWrapping="Wrap" Text="$220,000" VerticalAlignment="Top" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Left" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="179.977"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="195,1.167,0,0" TextWrapping="Wrap" Text="$220,000" VerticalAlignment="Top" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Left" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="179.977"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="247.667,0.334,0,0" TextWrapping="Wrap" Text="$240,000" VerticalAlignment="Top" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Left" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="179.977"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="298.167,0.669,298.583,0" TextWrapping="Wrap" Text="$200,000" VerticalAlignment="Top" FontSize="10.667" TextAlignment="Center" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="179.977"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="0,-0.5,247.583,0" TextWrapping="Wrap" Text="$260,000" VerticalAlignment="Top" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Right" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="179.977"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="0,0.667,194.583,0" TextWrapping="Wrap" Text="$260,000" VerticalAlignment="Top" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Right" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="179.977"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="0,0,92.583,0" TextWrapping="Wrap" Text="$280,000" VerticalAlignment="Top" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Right" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="179.977"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="0,55.333,142.749,0" TextWrapping="Wrap" Text="$150,000" VerticalAlignment="Top" FontSize="10.667" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="52">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="179.357"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="0,106.5,-13.417,0" TextWrapping="Wrap" Text="$300,000" VerticalAlignment="Top" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Right" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="269.86"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="0,159.833,-13.25,0" TextWrapping="Wrap" Text="$300,000" VerticalAlignment="Top" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Right" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="269.86"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="0,262,-12.917,0" TextWrapping="Wrap" Text="$320,000" VerticalAlignment="Top" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Right" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="269.86"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Margin="0,311.268,-4.667,314.232" TextWrapping="Wrap" Text="$200,000" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Right" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="269.86"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="0,0,-12.417,210.833" TextWrapping="Wrap" Text="$350,000" VerticalAlignment="Bottom" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Right" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="269.86"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<TextBlock Height="23.333" Margin="0,0,-12.25,106.5" TextWrapping="Wrap" Text="$400,000" VerticalAlignment="Bottom" FontSize="10.667" TextAlignment="Center" HorizontalAlignment="Right" Width="52" RenderTransformOrigin="0.5,0.5">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="269.86"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+			<Path x:Name="polygon1" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Height="9.834" Stretch="Fill" Width="50.167" Opacity="0.7" Stroke="Black" HorizontalAlignment="Right" Margin="0,0,92.749,93.5" VerticalAlignment="Bottom"/>
+			<Path x:Name="polygon2" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Height="9.834" Stretch="Fill" Width="50.167" Opacity="0.7" Stroke="Black" HorizontalAlignment="Right" Margin="0,0,196.417,93.5" VerticalAlignment="Bottom"/>
+			<Path x:Name="polygon3" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Height="9.834" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="297.834,0,299.249,93.5" VerticalAlignment="Bottom"/>
+			<Path x:Name="polygon4" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Height="9.834" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="248.333,0,0,93.5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50.167"/>
+			<Path x:Name="polygon5" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Height="9.834" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="143.833,0,0,93.5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50.167"/>
+			<Path x:Name="polygon6" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Height="9.834" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="93.666,0,0,93.5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50.167"/>
+			<Path x:Name="polygon7" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Height="9.834" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="71.667,0,0,113.333" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50.167" RenderTransformOrigin="0.5,0.5">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="90.277"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon8" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Height="9.834" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="72.666,0,0,165" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50.167" RenderTransformOrigin="0.5,0.5">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="90.277"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon9" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Height="9.834" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="72.166,0,0,216.5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50.167" RenderTransformOrigin="0.5,0.5">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="90.277"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon10" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Height="9.834" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="73.166,0,0,270.5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50.167" RenderTransformOrigin="0.5,0.5">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="90.277"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon11" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="72.667,320.206,0,320.295" HorizontalAlignment="Left" Width="50.167" RenderTransformOrigin="0.5,0.5">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="90.277"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon12" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="73.166,268.166,0,0" HorizontalAlignment="Left" Width="50.167" RenderTransformOrigin="0.5,0.5" Height="9.834" VerticalAlignment="Top">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="90.277"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon13" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="73.166,164.333,0,0" HorizontalAlignment="Left" Width="50.167" RenderTransformOrigin="0.5,0.5" Height="9.834" VerticalAlignment="Top">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="90.277"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon14" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="72.166,112.833,0,0" HorizontalAlignment="Left" Width="50.167" RenderTransformOrigin="0.5,0.5" Height="9.834" VerticalAlignment="Top">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="90.277"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon15" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="94.166,93,0,0" HorizontalAlignment="Left" Width="50.167" RenderTransformOrigin="0.5,0.5" Height="9.834" VerticalAlignment="Top">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="178.922"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon16" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="195.499,91,0,0" HorizontalAlignment="Left" Width="50.167" RenderTransformOrigin="0.5,0.5" Height="9.834" VerticalAlignment="Top">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="178.922"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon17" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="247.499,91,0,0" HorizontalAlignment="Left" Width="50.167" RenderTransformOrigin="0.5,0.5" Height="9.834" VerticalAlignment="Top">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="178.922"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon18" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="299.156,92.01,297.416,0" RenderTransformOrigin="0.5,0.5" Height="9.834" VerticalAlignment="Top">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="178.922"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon19" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="0,92,246.75,0" RenderTransformOrigin="0.5,0.5" Height="9.834" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50.167">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="178.922"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon20" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="0,92.5,195.75,0" RenderTransformOrigin="0.5,0.5" Height="9.834" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50.167">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="178.922"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon21" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="0,92.5,145.083,0" RenderTransformOrigin="0.5,0.5" Height="9.834" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50.167">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="178.922"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon22" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="0,91.5,93.583,0" RenderTransformOrigin="0.5,0.5" Height="9.834" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50.167">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="178.922"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon23" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="0,113.5,71.25,0" RenderTransformOrigin="0.5,0.5" Height="9.834" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50.167">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="269.618"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon24" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="0,165.167,71.25,0" RenderTransformOrigin="0.5,0.5" Height="9.834" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50.167">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="269.618"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon25" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="0,267.834,71.75,0" RenderTransformOrigin="0.5,0.5" Height="9.834" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50.167">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="269.618"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon26" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="0,319.881,72.25,318.618" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="50.167">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="269.618"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon27" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="0,0,71.25,216.832" RenderTransformOrigin="0.5,0.5" Height="9.834" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="50.167">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="269.618"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Path x:Name="polygon28" Data="M407.33333,556.33333 C418,536 418.16701,535.83365 418.16701,535.83365 L450.49907,536.16728 458.83214,555.83365 z" Fill="#FFF4F4F5" Stretch="Fill" Opacity="0.7" Stroke="Black" Margin="0,0,70.75,116.332" RenderTransformOrigin="0.5,0.5" Height="9.834" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="50.167">
+				<Path.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="269.618"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<Grid x:Name="grdLand1" HorizontalAlignment="Right" Height="17.5" Margin="0,0,92.416,74.5" VerticalAlignment="Bottom" Width="52">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand2" HorizontalAlignment="Right" Height="17.5" Margin="0,0,194.584,74.5" VerticalAlignment="Bottom" Width="52">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand3" HorizontalAlignment="Left" Height="17.5" Margin="246.5,0,0,74.5" VerticalAlignment="Bottom" Width="52">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand4" HorizontalAlignment="Left" Height="17.5" Margin="143.833,0,0,74.5" VerticalAlignment="Bottom" Width="52">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand5" HorizontalAlignment="Left" Height="17.5" Margin="91.833,0,0,74.5" VerticalAlignment="Bottom" Width="52">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand6" HorizontalAlignment="Left" Height="17.5" Margin="56.167,0,0,110.167" VerticalAlignment="Bottom" Width="52" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="90"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand7" HorizontalAlignment="Left" Height="17.5" Margin="56.167,0,0,214.5" VerticalAlignment="Bottom" Width="52" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="90"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand8" HorizontalAlignment="Left" Height="17.5" Margin="55.667,0,0,266.333" VerticalAlignment="Bottom" Width="52" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="90"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand9" HorizontalAlignment="Left" Height="17.5" Margin="57.667,263.833,0,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="90"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand10" HorizontalAlignment="Left" Height="17.5" Margin="56.167,161,0,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="90"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand11" HorizontalAlignment="Left" Height="17.5" Margin="56.667,109.667,0,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="90"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand12" HorizontalAlignment="Left" Height="17.5" Margin="90.334,74.667,0,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="180"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand13" HorizontalAlignment="Left" Height="17.5" Margin="195.667,73.667,0,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="180"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand14" HorizontalAlignment="Left" Height="17.5" Margin="246.5,73.167,0,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="180"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand15" HorizontalAlignment="Right" Height="17.5" Margin="0,73.667,248.417,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="180"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand16" HorizontalAlignment="Right" Height="17.5" Margin="0,73.167,194.75,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="180"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand17" HorizontalAlignment="Right" Height="17.5" Margin="0,73.667,92.417,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="180"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand18" HorizontalAlignment="Right" Height="17.5" Margin="0,108,54.584,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="270"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand19" HorizontalAlignment="Right" Height="17.5" Margin="0,161.667,55.584,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="270"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand20" HorizontalAlignment="Right" Height="17.5" Margin="0,263.667,56.084,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="270"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand21" HorizontalAlignment="Right" Height="17.5" Margin="0,0,55.584,213.666" VerticalAlignment="Bottom" Width="52" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="270"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<Grid x:Name="grdLand22" HorizontalAlignment="Right" Height="17.5" Margin="0,0,54.584,110.999" VerticalAlignment="Bottom" Width="52" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="270"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+		</Grid>
+		<Grid x:Name="grdMessage" Margin="133,124,462.666,165.667" Width="400" Height="400" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+		<Button x:Name="btnRollDices" Content="Roll Dices" HorizontalAlignment="Right" Height="38" Margin="0,0,162,2" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Bottom" Width="150" Foreground="#FFEDDDDD" FontSize="18.667" FontFamily="Comic Sans MS" Cursor="Hand" Click="btnRollDices_Click" />
+		<Button x:Name="btnEndTurn" Content="End Turn" HorizontalAlignment="Right" Height="38" Margin="0,0,8,2" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Bottom" Width="150" Foreground="#FFEDDDDD" FontSize="18.667" FontFamily="Comic Sans MS" Cursor="Hand" Click="btnEndTurn_Click" />
+		<Grid x:Name="grdDices" HorizontalAlignment="Right" Height="64" Margin="0,0,162,81.625" VerticalAlignment="Bottom" Width="150">		
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="75" />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<Image x:Name="dice11" Margin="0,0,11,0" Source="imgs/Monopoly_Dice1.png" Stretch="Fill" Opacity="0"/>
+			<Image x:Name="dice12" Margin="0,0,11,0" Source="imgs/Monopoly_Dice2.png" Stretch="Fill" Opacity="0"/>
+			<Image x:Name="dice13" Margin="0,0,11,0" Source="imgs/Monopoly_Dice3.png" Stretch="Fill" Opacity="0"/>
+			<Image x:Name="dice14" Margin="0,0,11,0" Source="imgs/Monopoly_Dice4.png" Stretch="Fill" Opacity="0"/>
+			<Image x:Name="dice15" Margin="0,0,11,0" Source="imgs/Monopoly_Dice5.png" Stretch="Fill" Opacity="0"/>
+			<Image x:Name="dice16" Margin="0,0,11,0" Source="imgs/Monopoly_Dice6.png" Stretch="Fill" Opacity="0"/>
+			<Image x:Name="dice21" Margin="11,0,0,0" Source="imgs/Monopoly_Dice1.png" Stretch="Fill" Grid.Column="1" Opacity="0"/>
+			<Image x:Name="dice22" Margin="11,0,0,0" Source="imgs/Monopoly_Dice2.png" Stretch="Fill" Grid.Column="1" Opacity="0"/>
+			<Image x:Name="dice23" Margin="11,0,0,0" Source="imgs/Monopoly_Dice3.png" Stretch="Fill" Grid.Column="1" Opacity="0"/>
+			<Image x:Name="dice24" Margin="11,0,0,0" Source="imgs/Monopoly_Dice4.png" Stretch="Fill" Grid.Column="1" Opacity="0"/>
+			<Image x:Name="dice25" Margin="11,0,0,0" Source="imgs/Monopoly_Dice5.png" Stretch="Fill" Grid.Column="1" Opacity="0"/>
+			<Image x:Name="dice26" Margin="11,0,0,0" Source="imgs/Monopoly_Dice6.png" Stretch="Fill" Grid.Column="1" Opacity="0"/>
+		</Grid>
+		<Image x:Name="player1Token0" Source="imgs/carToken1.png" Stretch="Fill" Margin="0,0,390.25,97.962" Height="20" VerticalAlignment="Bottom" Width="40" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token0" HorizontalAlignment="Right" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Width="40" Margin="0,0,380.507,81.625" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token0" Source="imgs/carToken3.png" Stretch="Fill" Margin="580.243,0,373.757,65.458" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token0" HorizontalAlignment="Right" Height="20" Source="imgs/carToken4.png" Stretch="Fill" VerticalAlignment="Bottom" Width="40" Margin="0,0,365.757,49.667" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token1" Source="imgs/carToken1.png" Stretch="Fill" Margin="0,0,440,97.962" Height="20" VerticalAlignment="Bottom" Width="40" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token1" HorizontalAlignment="Right" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Width="40" Margin="0,0,440,81.625" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token1" Source="imgs/carToken3.png" Stretch="Fill" Margin="514,0,440,65.458" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token1" HorizontalAlignment="Right" Height="20" Source="imgs/carToken4.png" Stretch="Fill" VerticalAlignment="Bottom" Width="40" Margin="0,0,438.25,49.667" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token2" Source="imgs/carToken1.png" Stretch="Fill" Margin="458.333,0,495.667,97.962" Height="20" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token2" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="458.333,0,495.667,81.625" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token2" Source="imgs/carToken3.png" Stretch="Fill" Margin="458.333,0,495.666,65.458" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="HorizontalAlignment">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token2" Height="20" Source="imgs/carToken4.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="460.083,0,493.917,49.667" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token3" Source="imgs/carToken1.png" Stretch="Fill" Margin="407.333,0,0,97.962" Height="20" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token3" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="407.333,0,0,81.625" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token3" Source="imgs/carToken3.png" Stretch="Fill" Margin="407.333,0,546.666,65.458" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token3" Height="20" Source="imgs/carToken4.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="409.083,0,0,49.667" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token4" Source="imgs/carToken1.png" Stretch="Fill" Margin="355.333,0,0,97.962" Height="20" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token4" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="355.333,0,0,81.625" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token4" Source="imgs/carToken3.png" Stretch="Fill" Margin="355.333,0,598.666,65.458" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token4" Height="20" Source="imgs/carToken4.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="357.083,0,0,49.667" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token5" Source="imgs/carToken1.png" Stretch="Fill" Margin="306.25,0,0,97.962" Height="20" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token5" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="306.25,0,0,81.625" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token5" Source="imgs/carToken3.png" Stretch="Fill" Margin="306.25,0,647.749,65.458" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token5" Height="20" Source="imgs/carToken4.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="308,0,0,49.667" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token6" Source="imgs/carToken1.png" Stretch="Fill" Margin="251.25,0,0,97.962" Height="20" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token6" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="251.25,0,0,81.625" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token6" Source="imgs/carToken3.png" Stretch="Fill" Margin="251.25,0,702.749,65.458" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token6" Height="20" Source="imgs/carToken4.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="253,0,0,49.667" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token7" Source="imgs/carToken1.png" Stretch="Fill" Margin="200.917,0,0,97.962" Height="20" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token7" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="200.917,0,0,81.625" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token7" Source="imgs/carToken3.png" Stretch="Fill" Margin="200.917,0,753.082,65.458" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token7" Height="20" Source="imgs/carToken4.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="202.667,0,0,49.667" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token8" Source="imgs/carToken1.png" Stretch="Fill" Margin="149.25,0,0,97.962" Height="20" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token8" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="149.25,0,0,81.625" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token8" Source="imgs/carToken3.png" Stretch="Fill" Margin="149.25,0,804.749,65.458" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token8" Height="20" Source="imgs/carToken4.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="151,0,0,49.667" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token9" Source="imgs/carToken1.png" Stretch="Fill" Margin="98.583,0,0,97.962" Height="20" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token9" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="98.583,0,0,81.625" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token9" Source="imgs/carToken3.png" Stretch="Fill" Margin="98.583,0,855.416,65.458" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token9" Height="20" Source="imgs/carToken4.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="100.333,0,0,49.667" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token10" Source="imgs/carToken1.png" Stretch="Fill" Margin="30.25,0,0,102.629" Height="20" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="60"/>
+					<TranslateTransform X="21.349" Y="11.316"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token10" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="30.25,0,0,86.292" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="60"/>
+					<TranslateTransform X="7.201" Y="3.147"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token10" Source="imgs/carToken3.png" Stretch="Fill" Margin="30.25,0,923.749,70.125" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="60"/>
+					<TranslateTransform X="-6.8" Y="-4.936"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token10" Height="20" Source="imgs/carToken4.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="32,0,0,54.334" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="60"/>
+					<TranslateTransform X="-21.349" Y="-11.316"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token11" Source="imgs/carToken1.png" Stretch="Fill" Margin="18.917,0,0,173.295" Height="20" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="25.022" Y="23.272"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token11" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="18.917,0,0,156.958" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="8.685" Y="6.935"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token11" Source="imgs/carToken3.png" Stretch="Fill" Margin="18.917,0,935.082,140.791" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="-7.482" Y="-9.232"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token11" Height="20" Source="imgs/carToken4.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="20.667,0,0,125" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="-25.022" Y="-23.272"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token12" Source="imgs/carToken1.png" Stretch="Fill" Margin="18.917,0,0,225.962" Height="20" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="25.022" Y="23.272"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token12" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="18.917,0,0,209.625" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="8.685" Y="6.935"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token12" Source="imgs/carToken3.png" Stretch="Fill" Margin="18.917,0,935.082,193.458" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="HorizontalMargin">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="-7.482" Y="-9.232"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token12" Height="20" Source="imgs/carToken4.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="20.667,0,0,177.667" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="-25.022" Y="-23.272"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token13" Source="imgs/carToken1.png" Stretch="Fill" Margin="18.917,0,0,279.295" Height="20" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="25.022" Y="23.272"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token13" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="18.917,0,0,262.958" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="8.685" Y="6.935"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token13" Source="imgs/carToken3.png" Stretch="Fill" Margin="18.917,0,935.082,246.791" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="HorizontalMargin">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="-7.482" Y="-9.232"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token13" Height="20" Source="imgs/carToken4.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="20.667,0,0,231" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="-25.022" Y="-23.272"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token14" Source="imgs/carToken1.png" Stretch="Fill" Margin="18.917,340.372,0,331.628" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="25.022" Y="23.272"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token14" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="18.917,0,0,315.291" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="8.685" Y="6.935"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token14" Source="imgs/carToken3.png" Stretch="Fill" Margin="18.917,0,935.082,299.124" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="HorizontalMargin">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="-7.482" Y="-9.232"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token14" Height="20" Source="imgs/carToken4.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="20.667,0,0,283.333" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="-25.022" Y="-23.272"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token15" Source="imgs/carToken1.png" Stretch="Fill" Margin="18.917,291.039,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="25.022" Y="23.272"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token15" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="18.917,307.376,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="8.685" Y="6.935"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token15" Source="imgs/carToken3.png" Stretch="Fill" Margin="18.917,323.543,935.082,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="HorizontalMargin">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="-7.482" Y="-9.232"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token15" Source="imgs/carToken4.png" Stretch="Fill" Margin="20.667,339.334,0,332.666" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="-25.022" Y="-23.272"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token16" Source="imgs/carToken1.png" Stretch="Fill" Margin="18.917,240.039,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="25.022" Y="23.272"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token16" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="18.917,256.376,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="8.685" Y="6.935"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token16" Source="imgs/carToken3.png" Stretch="Fill" Margin="18.917,272.543,935.082,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="HorizontalMargin">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="-7.482" Y="-9.232"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token16" Source="imgs/carToken4.png" Stretch="Fill" Margin="20.667,288.334,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="-25.022" Y="-23.272"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token17" Source="imgs/carToken1.png" Stretch="Fill" Margin="18.917,191.372,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="25.022" Y="23.272"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token17" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="18.917,207.709,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="8.685" Y="6.935"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token17" Source="imgs/carToken3.png" Stretch="Fill" Margin="18.917,223.876,935.082,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="HorizontalMargin">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="-7.482" Y="-9.232"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token17" Source="imgs/carToken4.png" Stretch="Fill" Margin="20.667,239.667,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="-25.022" Y="-23.272"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token18" Source="imgs/carToken1.png" Stretch="Fill" Margin="18.917,136.705,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="25.022" Y="23.272"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token18" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="18.917,153.042,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="8.685" Y="6.935"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token18" Source="imgs/carToken3.png" Stretch="Fill" Margin="18.917,169.209,935.082,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="HorizontalMargin">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="-7.482" Y="-9.232"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token18" Source="imgs/carToken4.png" Stretch="Fill" Margin="20.667,185,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="-25.022" Y="-23.272"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token19" Source="imgs/carToken1.png" Stretch="Fill" Margin="18.917,83.705,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="25.022" Y="23.272"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token19" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="18.917,100.042,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="8.685" Y="6.935"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token19" Source="imgs/carToken3.png" Stretch="Fill" Margin="18.917,116.209,935.082,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="HorizontalMargin">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="-7.482" Y="-9.232"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token19" Source="imgs/carToken4.png" Stretch="Fill" Margin="20.667,132,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90"/>
+					<TranslateTransform X="-25.022" Y="-23.272"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token20" Source="imgs/carToken1.png" Stretch="Fill" Margin="26.584,15.705,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="135"/>
+					<TranslateTransform X="18.568" Y="40.603"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token20" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="26.584,32.042,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="135"/>
+					<TranslateTransform X="7.016" Y="12.714"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token20" Source="imgs/carToken3.png" Stretch="Fill" Margin="26.584,48.209,927.415,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="135"/>
+					<TranslateTransform X="-4.416" Y="-14.885"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token20" Source="imgs/carToken4.png" Stretch="Fill" Margin="28.334,64,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="135"/>
+					<TranslateTransform X="-18.568" Y="-40.603"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token21" Source="imgs/carToken1.png" Stretch="Fill" Margin="92.584,6.372,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="48.294"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token21" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="92.584,22.709,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="15.62"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token21" Source="imgs/carToken3.png" Stretch="Fill" Margin="92.584,38.876,861.415,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="-16.714"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token21" Source="imgs/carToken4.png" Stretch="Fill" Margin="94.334,54.667,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="-1.75" Y="-48.294"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token22" Source="imgs/carToken1.png" Stretch="Fill" Margin="145.917,6.372,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="48.294"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token22" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="145.917,22.709,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="15.62"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token22" Source="imgs/carToken3.png" Stretch="Fill" Margin="145.917,38.876,808.082,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="-16.714"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token22" Source="imgs/carToken4.png" Stretch="Fill" Margin="147.667,54.667,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="-1.75" Y="-48.294"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token23" Source="imgs/carToken1.png" Stretch="Fill" Margin="199.25,6.372,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="48.294"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token23" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="199.25,22.709,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="15.62"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token23" Source="imgs/carToken3.png" Stretch="Fill" Margin="199.25,38.876,754.749,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="-16.714"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token23" Source="imgs/carToken4.png" Stretch="Fill" Margin="201,54.667,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="-1.75" Y="-48.294"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token24" Source="imgs/carToken1.png" Stretch="Fill" Margin="249.917,6.372,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="48.294"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token24" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="249.917,22.709,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="15.62"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token24" Source="imgs/carToken3.png" Stretch="Fill" Margin="249.917,38.876,704.082,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="-16.714"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token24" Source="imgs/carToken4.png" Stretch="Fill" Margin="251.667,54.667,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="-1.75" Y="-48.294"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token25" Source="imgs/carToken1.png" Stretch="Fill" Margin="302.25,6.372,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="48.294"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token25" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="302.25,22.709,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="15.62"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token25" Source="imgs/carToken3.png" Stretch="Fill" Margin="302.25,38.876,651.749,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="-16.714"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token25" Source="imgs/carToken4.png" Stretch="Fill" Margin="304,54.667,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="-1.75" Y="-48.294"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token26" Source="imgs/carToken1.png" Stretch="Fill" Margin="352.583,6.372,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="48.294"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token26" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="352.583,22.709,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="15.62"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token26" Source="imgs/carToken3.png" Stretch="Fill" Margin="352.583,38.876,601.416,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="-16.714"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token26" Source="imgs/carToken4.png" Stretch="Fill" Margin="354.333,54.667,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="-1.75" Y="-48.294"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token27" Source="imgs/carToken1.png" Stretch="Fill" Margin="404.916,6.372,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="48.294"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token27" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="404.916,22.709,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="15.62"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token27" Source="imgs/carToken3.png" Stretch="Fill" Margin="404.916,38.876,549.083,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="-16.714"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token27" Source="imgs/carToken4.png" Stretch="Fill" Margin="406.666,54.667,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="-1.75" Y="-48.294"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token28" Source="imgs/carToken1.png" Stretch="Fill" Margin="454.916,6.372,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="48.294"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token28" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="454.916,22.709,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="15.62"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token28" Source="imgs/carToken3.png" Stretch="Fill" Margin="454.916,38.876,499.083,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="-16.714"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token28" Source="imgs/carToken4.png" Stretch="Fill" Margin="456.666,54.667,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="-1.75" Y="-48.294"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token29" Source="imgs/carToken1.png" Stretch="Fill" Margin="0,6.372,444.417,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="48.294"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token29" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="0,22.709,444.417,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="15.62"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token29" Source="imgs/carToken3.png" Stretch="Fill" Margin="509.583,38.876,444.416,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="1.75" Y="-16.714"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token29" Source="imgs/carToken4.png" Stretch="Fill" Margin="0,54.667,442.667,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform X="-1.75" Y="-48.294"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token30" Source="imgs/carToken1.png" Stretch="Fill" Margin="0,12.039,373.084,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="225"/>
+					<TranslateTransform X="-15.58" Y="41.841"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token30" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="0,28.376,373.084,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="225"/>
+					<TranslateTransform X="-4.028" Y="13.952"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token30" Source="imgs/carToken3.png" Stretch="Fill" Margin="580.916,44.543,373.083,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="225"/>
+					<TranslateTransform X="7.403" Y="-13.648"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token30" Source="imgs/carToken4.png" Stretch="Fill" Margin="0,60.334,371.334,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="225"/>
+					<TranslateTransform X="15.58" Y="-41.841"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token31" Source="imgs/carToken1.png" Stretch="Fill" Margin="0,85.039,365.751,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="-23.272" Y="25.023"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token31" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="0,101.376,365.751,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="-6.935" Y="8.686"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token31" Source="imgs/carToken3.png" Stretch="Fill" Margin="588.249,117.543,365.75,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="9.232" Y="-7.482"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token31" Source="imgs/carToken4.png" Stretch="Fill" Margin="0,133.334,364.001,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="23.272" Y="-25.023"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token32" Source="imgs/carToken1.png" Stretch="Fill" Margin="0,134.372,365.751,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="-23.272" Y="25.023"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token32" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="0,150.709,365.751,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="-6.935" Y="8.686"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token32" Source="imgs/carToken3.png" Stretch="Fill" Margin="588.249,166.876,365.75,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="HorizontalMargin">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="9.232" Y="-7.482"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token32" Source="imgs/carToken4.png" Stretch="Fill" Margin="0,182.667,364.001,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="23.272" Y="-25.023"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token33" Source="imgs/carToken1.png" Stretch="Fill" Margin="0,186.039,365.751,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="-23.272" Y="25.023"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token33" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="0,202.376,365.751,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="-6.935" Y="8.686"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token33" Source="imgs/carToken3.png" Stretch="Fill" Margin="588.249,218.543,365.75,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="HorizontalMargin">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="9.232" Y="-7.482"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token33" Source="imgs/carToken4.png" Stretch="Fill" Margin="0,234.334,364.001,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="23.272" Y="-25.023"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token34" Source="imgs/carToken1.png" Stretch="Fill" Margin="0,238.372,365.751,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="-23.272" Y="25.023"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token34" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="0,254.709,365.751,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="-6.935" Y="8.686"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token34" Source="imgs/carToken3.png" Stretch="Fill" Margin="588.249,270.876,365.75,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="HorizontalMargin">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="9.232" Y="-7.482"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token34" Source="imgs/carToken4.png" Stretch="Fill" Margin="0,286.667,364.001,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="23.272" Y="-25.023"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token35" Source="imgs/carToken1.png" Stretch="Fill" Margin="0,287.372,365.751,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Top">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="-23.272" Y="25.023"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token35" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Top" Margin="0,303.709,365.751,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="-6.935" Y="8.686"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token35" Source="imgs/carToken3.png" Stretch="Fill" Margin="588.249,319.876,365.75,0" Height="20" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="HorizontalMargin">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="9.232" Y="-7.482"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token35" Source="imgs/carToken4.png" Stretch="Fill" Margin="0,335.667,364.001,336.333" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="23.272" Y="-25.023"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token36" Source="imgs/carToken1.png" Stretch="Fill" Margin="0,338.372,365.751,333.628" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="-23.272" Y="25.023"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token36" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="0,0,365.751,317.291" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="-6.935" Y="8.686"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token36" Source="imgs/carToken3.png" Stretch="Fill" Margin="588.249,0,365.75,301.124" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="HorizontalMargin">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="9.232" Y="-7.482"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token36" Source="imgs/carToken4.png" Stretch="Fill" Margin="0,0,364.001,285.333" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Bottom">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="23.272" Y="-25.023"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token37" Source="imgs/carToken1.png" Stretch="Fill" Margin="0,0,365.751,280.961" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Bottom">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="-23.272" Y="25.023"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token37" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="0,0,365.751,264.624" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="-6.935" Y="8.686"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token37" Source="imgs/carToken3.png" Stretch="Fill" Margin="588.249,0,365.75,248.457" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="HorizontalMargin">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="9.232" Y="-7.482"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token37" Source="imgs/carToken4.png" Stretch="Fill" Margin="0,0,364.001,232.666" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Bottom">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="23.272" Y="-25.023"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token38" Source="imgs/carToken1.png" Stretch="Fill" Margin="0,0,365.751,225.961" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Bottom">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="-23.272" Y="25.023"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token38" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="0,0,365.751,209.624" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="-6.935" Y="8.686"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token38" Source="imgs/carToken3.png" Stretch="Fill" Margin="588.249,0,365.75,193.457" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="HorizontalMargin">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="9.232" Y="-7.482"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token38" Source="imgs/carToken4.png" Stretch="Fill" Margin="0,0,364.001,177.666" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Bottom">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="23.272" Y="-25.023"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player1Token39" Source="imgs/carToken1.png" Stretch="Fill" Margin="0,0,365.751,175.294" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Bottom">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="-23.272" Y="25.023"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player2Token39" Height="20" Source="imgs/carToken2.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="0,0,365.751,158.957" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="-6.935" Y="8.686"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player3Token39" Source="imgs/carToken3.png" Stretch="Fill" Margin="588.249,0,365.75,142.79" Height="20" VerticalAlignment="Bottom" Width="40" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="HorizontalMargin">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="9.232" Y="-7.482"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="player4Token39" Source="imgs/carToken4.png" Stretch="Fill" Margin="0,0,364.001,126.999" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Bottom">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="270"/>
+					<TranslateTransform X="23.272" Y="-25.023"/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+	</Grid>
+</Window>

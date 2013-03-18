@@ -1,0 +1,306 @@
+<?xml version="1.0"?>
+<!DOCTYPE SquareList[
+<!ELEMENT SquareList (Square+)>
+<!ELEMENT Square (ValueSquare | FunctionalSquare)>
+<!ATTLIST Square 
+	SquareID CDATA #REQUIRED
+	SquareName CDATA #REQUIRED>
+	
+<!ELEMENT ValueSquare (Land | Utility | TrainStation)>
+<!ATTLIST ValueSquare 
+	Price CDATA #REQUIRED
+	MortgageValue CDATA #REQUIRED>
+
+<!ELEMENT Land (#PCDATA)>
+<!ATTLIST Land
+	PerHouseCost CDATA #REQUIRED
+	PerHotelCost CDATA #REQUIRED
+	Rent0 CDATA #REQUIRED
+	Rent1 CDATA #REQUIRED
+	Rent2 CDATA #REQUIRED
+	Rent3 CDATA #REQUIRED
+	Rent4 CDATA #REQUIRED
+	RentHotel CDATA #REQUIRED>
+
+<!ELEMENT Utility (#PCDATA)>
+<!ATTLIST Utility
+	Multiplier1 CDATA #REQUIRED
+	Multiplier2 CDATA #REQUIRED>
+	
+<!ELEMENT TrainStation (#PCDATA)>
+<!ATTLIST TrainStation
+	Rent1 CDATA #REQUIRED
+	Rent2 CDATA #REQUIRED
+	Rent3 CDATA #REQUIRED
+	Rent4 CDATA #REQUIRED>
+	
+<!ELEMENT FunctionalSquare (TaxSquare | CommunityChest | ChanceSquare | GOSquare | FreeParkingLot | GTJSquare | JailSquare)>
+
+<!ELEMENT TaxSquare (#PCDATA)>
+<!ATTLIST TaxSquare 
+	TaxRate CDATA #REQUIRED
+	Percentage CDATA #REQUIRED
+	Type CDATA #REQUIRED>
+
+<!ELEMENT ChanceSquare (#PCDATA)>
+
+<!ELEMENT CommunityChest (#PCDATA)>
+
+<!ELEMENT GOSquare (#PCDATA)>
+<!ATTLIST GOSquare Salary CDATA #REQUIRED>
+
+<!ELEMENT FreeParkingLot (#PCDATA)>
+<!ATTLIST FreeParkingLot ChargeFee CDATA #REQUIRED>
+
+<!ELEMENT GTJSquare (#PCDATA)>
+
+<!ELEMENT JailSquare (#PCDATA)>
+]>
+
+<SquareList>
+	<Square SquareID="0" SquareName="Go">
+		<FunctionalSquare>
+			<GOSquare Salary="200000"></GOSquare>
+		</FunctionalSquare>
+	</Square>
+	
+	<Square SquareID="1" SquareName="MEDITER-RANEAN AVENUE">
+		<ValueSquare Price="60000" MortgageValue="30000">
+			<Land RentHotel="250000" PerHotelCost="50000" Rent0="2000" Rent1="10000" Rent2="30000" Rent3="90000" Rent4="160000" PerHouseCost="50000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="2" SquareName="COMMUNITY CHEST">
+		<FunctionalSquare>
+			<CommunityChest></CommunityChest>
+		</FunctionalSquare>
+	</Square>
+	
+	<Square SquareID="3" SquareName="BALTIC AVENUE">
+		<ValueSquare Price="60000" MortgageValue="30000">
+			<Land RentHotel="450000" PerHotelCost="50000" Rent0="4000" Rent1="20000" Rent2="60000" Rent3="180000" Rent4="320000" PerHouseCost="50000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="4" SquareName="INCOME TAX">
+		<FunctionalSquare>
+			<TaxSquare Percentage="0.1" Type="INCOME" TaxRate="200000"></TaxSquare>
+		</FunctionalSquare>
+	</Square>
+	
+	<Square SquareID="5" SquareName="READING RAILROAD">
+		<ValueSquare Price="200000" MortgageValue="100000">
+			<TrainStation Rent1="25000" Rent2="50000" Rent3="100000" Rent4="200000"></TrainStation>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="6" SquareName="ORIENTAL AVENUE">
+		<ValueSquare Price="100000" MortgageValue="50000">
+			<Land RentHotel="550000" PerHotelCost="50000" Rent0="6000" Rent1="30000" Rent2="90000" Rent3="270000" Rent4="400000" PerHouseCost="50000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="7" SquareName="CHANCE">
+		<FunctionalSquare>
+			<ChanceSquare></ChanceSquare>
+		</FunctionalSquare>
+	</Square>
+	
+	<Square SquareID="8" SquareName="VERMONT AVENUE">
+		<ValueSquare Price="100000" MortgageValue="50000">
+			<Land RentHotel="550000" PerHotelCost="50000" Rent0="6000" Rent1="30000" Rent2="90000" Rent3="270000" Rent4="400000" PerHouseCost="50000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="9" SquareName="CONNECTICUT AVENUE">
+		<ValueSquare Price="120000" MortgageValue="60000">
+			<Land RentHotel="600000" PerHotelCost="50000" Rent0="8000" Rent1="40000" Rent2="100000" Rent3="300000" Rent4="450000" PerHouseCost="50000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="10" SquareName="JAIL">
+		<FunctionalSquare>
+			<JailSquare></JailSquare>
+		</FunctionalSquare>
+	</Square>
+	
+	<Square SquareID="11" SquareName="ST.CHARLES PLACE">
+		<ValueSquare Price="140000" MortgageValue="70000">
+			<Land RentHotel="750000" PerHotelCost="100000" Rent0="10000" Rent1="50000" Rent2="150000" Rent3="450000" Rent4="625000" PerHouseCost="100000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="12" SquareName="ELECTRIC COMPANY">
+		<ValueSquare Price="150000" MortgageValue="75000">
+			<Utility Multiplier1="4000" Multiplier2="10000"></Utility>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="13" SquareName="STATES AVENUE">
+		<ValueSquare Price="140000" MortgageValue="70000">
+			<Land RentHotel="750000" PerHotelCost="100000" Rent0="10000" Rent1="50000" Rent2="150000" Rent3="450000" Rent4="625000" PerHouseCost="100000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="14" SquareName="VIRGINIA AVENUE">
+		<ValueSquare Price="160000" MortgageValue="80000">
+			<Land RentHotel="900000" PerHotelCost="100000" Rent0="12000" Rent1="60000" Rent2="180000" Rent3="500000" Rent4="700000" PerHouseCost="100000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="15" SquareName="PENNSYLVANIA RAILROAD">
+		<ValueSquare Price="200000" MortgageValue="100000">
+			<TrainStation Rent1="25000" Rent2="50000" Rent3="100000" Rent4="200000"></TrainStation>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="16" SquareName="ST.JAMES PLACE">
+		<ValueSquare Price="180000" MortgageValue="90000">
+			<Land RentHotel="950000" PerHotelCost="100000" Rent0="14000" Rent1="70000" Rent2="200000" Rent3="550000" Rent4="750000" PerHouseCost="100000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="17" SquareName="COMMUNITY CHEST">
+		<FunctionalSquare>
+			<CommunityChest></CommunityChest>
+		</FunctionalSquare>
+	</Square>
+	
+	<Square SquareID="18" SquareName="TENNESSEE AVENUE">
+		<ValueSquare Price="180000" MortgageValue="90000">
+			<Land RentHotel="950000" PerHotelCost="100000" Rent0="14000" Rent1="70000" Rent2="200000" Rent3="550000" Rent4="750000" PerHouseCost="100000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="19" SquareName="NEW YORK AVENUE">
+		<ValueSquare Price="200000" MortgageValue="100000">
+			<Land RentHotel="1000000" PerHotelCost="100000" Rent0="16000" Rent1="80000" Rent2="220000" Rent3="600000" Rent4="800000" PerHouseCost="100000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="20" SquareName="FREE PARKING">
+		<FunctionalSquare>
+			<FreeParkingLot ChargeFee="20000"></FreeParkingLot>
+		</FunctionalSquare>
+	</Square>
+	
+	<Square SquareID="21" SquareName="KENTUCKY AVENUE">
+		<ValueSquare Price="220000" MortgageValue="110000">
+			<Land RentHotel="1050000" PerHotelCost="150000" Rent0="18000" Rent1="90000" Rent2="250000" Rent3="700000" Rent4="875000" PerHouseCost="150000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="22" SquareName="CHANCE">
+		<FunctionalSquare>
+			<ChanceSquare></ChanceSquare>
+		</FunctionalSquare>
+	</Square>
+	
+	<Square SquareID="23" SquareName="INDIANA AVENUE">
+		<ValueSquare Price="220000" MortgageValue="110000">
+			<Land RentHotel="1050000" PerHotelCost="150000" Rent0="18000" Rent1="90000" Rent2="250000" Rent3="700000" Rent4="875000" PerHouseCost="150000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="24" SquareName="ILLINOIS AVENUE">
+		<ValueSquare Price="240000" MortgageValue="120000">
+			<Land RentHotel="1100000" PerHotelCost="150000" Rent0="20000" Rent1="100000" Rent2="300000" Rent3="750000" Rent4="925000" PerHouseCost="150000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="25" SquareName="B. &amp; O. RAILROAD"> 
+		<ValueSquare Price="200000" MortgageValue="100000">
+			<TrainStation Rent1="25000" Rent2="50000" Rent3="100000" Rent4="200000"></TrainStation>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="26" SquareName="ATLANTIC AVENUE">
+		<ValueSquare Price="260000" MortgageValue="130000">
+			<Land RentHotel="1150000" PerHotelCost="150000" Rent0="22000" Rent1="110000" Rent2="330000" Rent3="800000" Rent4="975000" PerHouseCost="150000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="27" SquareName="VENTNOR AVENUE">
+		<ValueSquare Price="260000" MortgageValue="130000">
+			<Land RentHotel="1150000" PerHotelCost="150000" Rent0="22000" Rent1="110000" Rent2="330000" Rent3="800000" Rent4="975000" PerHouseCost="150000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="28" SquareName="WATER WORKS">
+		<ValueSquare Price="150000" MortgageValue="75000">
+			<Utility Multiplier1="4000" Multiplier2="10000"></Utility>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="29" SquareName="MARVIN GARDENS">
+		<ValueSquare Price="280000" MortgageValue="140000">
+			<Land RentHotel="1200000" PerHotelCost="150000" Rent0="24000" Rent1="120000" Rent2="360000" Rent3="850000" Rent4="1025000" PerHouseCost="150000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="30" SquareName="GO TO JAIL">
+		<FunctionalSquare>
+			<GTJSquare></GTJSquare>
+		</FunctionalSquare>
+	</Square>
+	
+	<Square SquareID="31" SquareName="PACIFIC AVENUE">
+		<ValueSquare Price="300000" MortgageValue="150000">
+			<Land RentHotel="1275000" PerHotelCost="200000" Rent0="26000" Rent1="130000" Rent2="390000" Rent3="900000" Rent4="1100000" PerHouseCost="200000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="32" SquareName="NORTH CAROLINA AVENUE">
+		<ValueSquare Price="300000" MortgageValue="150000">
+			<Land RentHotel="1275000" PerHotelCost="200000" Rent0="26000" Rent1="130000" Rent2="390000" Rent3="900000" Rent4="1100000" PerHouseCost="200000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="33" SquareName="COMMUNITY CHEST">
+		<FunctionalSquare>
+			<CommunityChest></CommunityChest>
+		</FunctionalSquare>
+	</Square>
+	
+	<Square SquareID="34" SquareName="PENNSYLVANIA AVENUE">
+		<ValueSquare Price="320000" MortgageValue="160000">
+			<Land RentHotel="1400000" PerHotelCost="200000" Rent0="28000" Rent1="150000" Rent2="450000" Rent3="1000000" Rent4="1200000" PerHouseCost="200000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="35" SquareName="SHORT LINE">
+		<ValueSquare Price="200000" MortgageValue="100000">
+			<TrainStation Rent1="25000" Rent2="50000" Rent3="100000" Rent4="200000"></TrainStation>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="36" SquareName="CHANCE">
+		<FunctionalSquare>
+			<ChanceSquare></ChanceSquare>
+		</FunctionalSquare>
+	</Square>
+	
+	<Square SquareID="37" SquareName="PARK PLACE">
+		<ValueSquare Price="350000" MortgageValue="175000">
+			<Land RentHotel="1500000" PerHotelCost="200000" Rent0="35000" Rent1="175000" Rent2="500000" Rent3="1100000" Rent4="1300000" PerHouseCost="200000"></Land>
+		</ValueSquare>
+	</Square>
+	
+	<Square SquareID="38" SquareName="LUXURY TAX">
+		<FunctionalSquare>
+			<TaxSquare Percentage="0" Type="LUXURY" TaxRate="75000"></TaxSquare>
+		</FunctionalSquare>
+	</Square>
+	
+	<Square SquareID="39" SquareName="BOARDWALK">
+		<ValueSquare Price="400000" MortgageValue="200000">
+			<Land RentHotel="2000000" PerHotelCost="200000" Rent0="50000" Rent1="200000" Rent2="600000" Rent3="1400000" Rent4="1700000" PerHouseCost="200000"></Land>
+		</ValueSquare>
+	</Square>
+	
+</SquareList>
+	
+
+
+
+	

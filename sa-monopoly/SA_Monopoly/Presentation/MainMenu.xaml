@@ -1,0 +1,181 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="SA_Monopoly.MainMenu"
+	x:Name="Window"
+	Title="Main Menu"
+	Width="1000" Height="720" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Topmost="False" Icon="imgs/monopoly.jpg" Closed="Window_Closed" WindowState="Normal">
+	
+	<Window.Resources>
+		
+		<Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualStateGroup.Transitions>
+										<VisualTransition GeneratedDuration="0:0:0.1"/>
+									</VisualStateGroup.Transitions>
+									<VisualState x:Name="Normal">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="contentPresenter">
+												<DiscreteObjectKeyFrame KeyTime="0">
+													<DiscreteObjectKeyFrame.Value>
+														<Cursor>Hand</Cursor>
+													</DiscreteObjectKeyFrame.Value>
+												</DiscreteObjectKeyFrame>
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="rectangle">
+												<DiscreteObjectKeyFrame KeyTime="0">
+													<DiscreteObjectKeyFrame.Value>
+														<Cursor>Hand</Cursor>
+													</DiscreteObjectKeyFrame.Value>
+												</DiscreteObjectKeyFrame>
+											</ObjectAnimationUsingKeyFrames>
+											<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+												<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+											</DoubleAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="MouseOver">
+										<Storyboard>
+											<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+												<EasingColorKeyFrame KeyTime="0" Value="#FFDAF106"/>
+											</ColorAnimationUsingKeyFrames>
+											<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+												<EasingColorKeyFrame KeyTime="0" Value="#FF1C6004"/>
+											</ColorAnimationUsingKeyFrames>
+											<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+												<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+											</DoubleAnimationUsingKeyFrames>
+											<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="contentPresenter">
+												<EasingDoubleKeyFrame KeyTime="0" Value="-1"/>
+											</DoubleAnimationUsingKeyFrames>
+											<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="contentPresenter">
+												<EasingDoubleKeyFrame KeyTime="0" Value="-1"/>
+											</DoubleAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="rectangle">
+												<DiscreteObjectKeyFrame KeyTime="0">
+													<DiscreteObjectKeyFrame.Value>
+														<Cursor>Hand</Cursor>
+													</DiscreteObjectKeyFrame.Value>
+												</DiscreteObjectKeyFrame>
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="contentPresenter">
+												<DiscreteObjectKeyFrame KeyTime="0">
+													<DiscreteObjectKeyFrame.Value>
+														<Cursor>Hand</Cursor>
+													</DiscreteObjectKeyFrame.Value>
+												</DiscreteObjectKeyFrame>
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="rectangle">
+												<DiscreteObjectKeyFrame KeyTime="0">
+													<DiscreteObjectKeyFrame.Value>
+														<Cursor>Hand</Cursor>
+													</DiscreteObjectKeyFrame.Value>
+												</DiscreteObjectKeyFrame>
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="contentPresenter">
+												<DiscreteObjectKeyFrame KeyTime="0">
+													<DiscreteObjectKeyFrame.Value>
+														<Cursor>Hand</Cursor>
+													</DiscreteObjectKeyFrame.Value>
+												</DiscreteObjectKeyFrame>
+											</ObjectAnimationUsingKeyFrames>
+											<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+												<EasingColorKeyFrame KeyTime="0" Value="#FF1F0CAF"/>
+											</ColorAnimationUsingKeyFrames>
+											<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+												<EasingColorKeyFrame KeyTime="0" Value="#FF2DA4FF"/>
+											</ColorAnimationUsingKeyFrames>
+											<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+												<EasingColorKeyFrame KeyTime="0" Value="#FF076062"/>
+											</ColorAnimationUsingKeyFrames>
+											<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+												<EasingDoubleKeyFrame KeyTime="0" Value="0.95"/>
+											</DoubleAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Disabled">
+										<Storyboard>
+											<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+												<EasingColorKeyFrame KeyTime="0" Value="#FF4B4646"/>
+											</ColorAnimationUsingKeyFrames>
+											<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+												<EasingColorKeyFrame KeyTime="0" Value="#FF060401"/>
+											</ColorAnimationUsingKeyFrames>
+											<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+												<EasingColorKeyFrame KeyTime="0" Value="#FF040403"/>
+											</ColorAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Rectangle x:Name="rectangle" Opacity="0.85" RadiusY="5" RadiusX="5" Stroke="#FFC49410" StrokeThickness="2">
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FFE5A71F" Offset="0"/>
+										<GradientStop Color="#FFDC0D0D" Offset="1"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<ContentPresenter x:Name="contentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RenderTransformOrigin="0.5,0.5">
+								<ContentPresenter.OpacityMask>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="Black" Offset="0"/>
+										<GradientStop Color="White" Offset="1"/>
+									</LinearGradientBrush>
+								</ContentPresenter.OpacityMask>
+								<ContentPresenter.RenderTransform>
+									<TransformGroup>
+										<ScaleTransform/>
+										<SkewTransform/>
+										<RotateTransform/>
+										<TranslateTransform/>
+									</TransformGroup>
+								</ContentPresenter.RenderTransform>
+							</ContentPresenter>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		
+	</Window.Resources>
+	
+	<Grid x:Name="LayoutRoot">
+		<Grid.Background>
+			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+				<GradientStop Color="#FF060891" Offset="0"/>
+				<GradientStop Color="#FF14D2D6" Offset="1"/>
+			</LinearGradientBrush>
+		</Grid.Background>
+        <Image Source="imgs\mainMenuBG.png" Stretch="Fill" Opacity="0.945"/>
+		<Image Height="174.5" Margin="91.5,0,31.5,0" Source="imgs/banner.png" Stretch="Fill" VerticalAlignment="Top" HorizontalAlignment="Center" Width="565">
+			<Image.Effect>
+				<DropShadowEffect Opacity="0.895" BlurRadius="9" ShadowDepth="7"/>
+			</Image.Effect>
+		</Image>
+		<Rectangle Fill="#FF2828D0" HorizontalAlignment="Left" Margin="8,196,0,8" Stroke="#FF5F0364" Width="240.5" RadiusX="10" RadiusY="10" StrokeThickness="5" Opacity="0.3"/>
+		<Canvas HorizontalAlignment="Left" Margin="8,196,0,8" Width="240.5"/>
+		<Rectangle Fill="#FF2828D0" Margin="252.5,196,8,8" Stroke="#FF5F0364" RadiusX="10" RadiusY="10" StrokeThickness="5" Opacity="0.3"/>
+		<Button x:Name="btnCreateNewGame" Content="Create New Game" HorizontalAlignment="Left" Height="51" Margin="18.5,210,0,0" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Top" Width="220" Foreground="#FFEDDDDD" FontSize="18.667" FontFamily="Comic Sans MS" Cursor="Hand" Click="btnCreateNewGame_Click" />
+		<Button x:Name="btnJoinGame" Content="Join Game" HorizontalAlignment="Left" Height="51" Margin="18.5,265,0,0" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Top" Width="220" Foreground="#FFEDDDDD" FontSize="18.667" FontFamily="Comic Sans MS" Cursor="Hand" Click="btnJoinGame_Click" />
+		<Button x:Name="btnOptions" Content="Options" HorizontalAlignment="Left" Margin="18.5,320,0,321" Style="{DynamicResource ButtonStyle1}" Width="220" Foreground="#FFEDDDDD" FontSize="18.667" FontFamily="Comic Sans MS" Cursor="Hand" Click="btnOptions_Click" />
+		<Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Margin="18.5,0,0,266" Style="{DynamicResource ButtonStyle1}" Width="220" Foreground="#FFEDDDDD" FontSize="18.667" FontFamily="Comic Sans MS" Cursor="Hand" Height="51" VerticalAlignment="Bottom" Click="btnExit_Click" />
+		<Grid x:Name="grdMain" Margin="270.5,210,26.5,21"/>
+	</Grid>
+</Window>

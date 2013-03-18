@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!DOCTYPE ChanceCardList[
+<!ELEMENT ChanceCardList (Card+)>
+<!ELEMENT Card (MonetaryCard? | GoToCard?)>
+<!ATTLIST Card 
+	CardID CDATA #REQUIRED
+	Content CDATA #REQUIRED
+	Type CDATA #REQUIRED>
+<!ELEMENT MonetaryCard (#PCDATA)>
+<!ATTLIST MonetaryCard
+	Amount CDATA #REQUIRED
+	Receiver CDATA #REQUIRED>
+<!ELEMENT GoToCard (#PCDATA)>
+<!ATTLIST GoToCard 
+	DestinedSquare CDATA #REQUIRED>
+]>
+	
+<ChanceCardList>
+
+	<Card Content="Parking Fine: $1,500" Type="Chance" CardID="M0">
+		<MonetaryCard Receiver="Bank" Amount="-1500"></MonetaryCard>
+	</Card>
+	
+	<Card Content="Pay Poor Tax: $1,200" Type="Chance" CardID="M1">
+		<MonetaryCard Receiver="Bank" Amount="-1200"></MonetaryCard>
+	</Card>
+	
+	<Card Content="Bank Pays You Dividend of $50,000" Type="Chance" CardID="M2">
+		<MonetaryCard Receiver="Reader" Amount="50000"></MonetaryCard>
+	</Card>
+		<Card Content="Pay Your Insurance Premium: $50,000" Type="CChest" CardID="M3">
+		<MonetaryCard Receiver="Bank" Amount="-50000"></MonetaryCard>
+	</Card>
+	
+	<Card Content="Your Xmas Fund Matures: Collect $100,000 " Type="CChest" CardID="M4">
+		<MonetaryCard Receiver="Reader" Amount="100000"></MonetaryCard>
+	</Card>
+	
+	<Card Content="Elected Chairman of the Board: Pay Each Player $50,000" Type="Chance" CardID="M5">
+		<MonetaryCard Receiver="AllOthers" Amount="-50000"></MonetaryCard>
+	</Card>
+	
+	<Card Content="Pay university fees of $45,000" Type="Chance" CardID="M5">
+		<MonetaryCard Receiver="Bank" Amount="-45000"></MonetaryCard>
+	</Card>
+	
+	<Card Content="&quot;Drunk in charge&quot; fine $2,000" Type="Chance" CardID="M5">
+		<MonetaryCard Receiver="Bank" Amount="-2000"></MonetaryCard>
+	</Card>
+	
+	<Card Content="Speeding fine $1,500" Type="Chance" CardID="M6">
+		<MonetaryCard Receiver="Bank" Amount="-1500"></MonetaryCard>
+	</Card>
+	
+	<Card Content="You have won a crossword competition. Collect $10,0000" Type="Chance" CardID="M7">
+		<MonetaryCard Receiver="Reader" Amount="10000"></MonetaryCard>
+	</Card>
+	
+	<Card Content="Grand opera Night - collect $5,000 from every player for opening night seats" Type="CChest" CardID="M8">
+		<MonetaryCard Receiver="AllOthers" Amount="5000"></MonetaryCard>
+	</Card>
+	
+	<Card Content="It's your Birthday! Collect $10,000 from each player" Type="CChest" CardID="M9">
+		<MonetaryCard Receiver="AllOthers" Amount="100000"></MonetaryCard>
+	</Card>
+	
+	<Card Content="Go Back to Baltic Avenue" Type="CChest" CardID="G0">
+		<GoToCard DestinedSquare="3"></GoToCard>
+	</Card>
+	
+	<Card Content="Go to Jail and will not reveice the Salary if pass &quot;Go&quot;" Type="CChest" CardID="G1">
+		<GoToCard DestinedSquare="10"></GoToCard>
+	</Card>
+	
+	<Card Content="Go back 3 spaces." Type="CChest" CardID="G2">
+		<GoToCard DestinedSquare="-3"></GoToCard>
+	</Card>
+	
+	<Card Content="Go forward 8 spaces." Type="Chance" CardID="G3">
+		<GoToCard DestinedSquare="+8"></GoToCard>
+	</Card>
+	
+	<Card Content="Advance to &quot;Go&quot;" Type="CChest" CardID="G4">
+		<GoToCard DestinedSquare="0"></GoToCard>
+	</Card>
+	
+	<Card Content="Take a Walk on Boardwalk" Type="CChest" CardID="G5">
+		<GoToCard DestinedSquare="39"></GoToCard>
+	</Card>
+	
+	<Card Content="Advance token to the nearest utility. If unowned you may buy it from bank. If owned, pay owner 20,000 times the value of dice when you go to Chance." Type="Chance" CardID="S0"></Card>
+	
+	<Card Content="Advance Token to the Nearest Railroad and pay owner twice the rental to which he is otherwise entitled. If Railroad is unowned, you may buy it from the Bank." Type="Chance" CardID="S1">
+	</Card>
+
+  <!--<Card Content="Pay a $10,000 fine or take a Chance" Type="CChest" CardID="S2"></Card>-->
+	
+	<!--<Card Content="You are assessed for street repairs - $4,000 per house, $11,500 per hotel" Type="CChest" CardID="S3"></Card>-->
+  <Card Content="Get out of jail free. You card trade this card" Type="CChest" CardID="S4"></Card>
+  <Card Content="Get out of jail free. You card trade this card" Type="Chance" CardID="S5"></Card>
+	
+</ChanceCardList>

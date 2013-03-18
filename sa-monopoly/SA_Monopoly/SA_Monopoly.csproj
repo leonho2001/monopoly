@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{455733A2-0599-4229-A649-BAFE0043DD1D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SA_Monopoly</RootNamespace>
+    <AssemblyName>SA_Monopoly</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20525.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\Server\ClientHandler.cs" />
+    <Compile Include="BLL\Server\Server.cs" />
+    <Compile Include="BLL\Support.cs" />
+    <Compile Include="BLL\Client\ctrlGame.cs" />
+    <Compile Include="BLL\Client\ctrlCard.cs" />
+    <Compile Include="BLL\Client\ctrlProperty.cs" />
+    <Compile Include="BLL\Client\ctrlSquare.cs" />
+    <Compile Include="DAL\CardFactory.cs" />
+    <Compile Include="DAL\PropertyFactory.cs" />
+    <Compile Include="DAL\SquareFactory.cs" />
+    <Compile Include="EL\Card\clsCard.cs" />
+    <Compile Include="EL\Card\clsGCard.cs" />
+    <Compile Include="EL\Card\clsMCard.cs" />
+    <Compile Include="EL\Card\clsSCard.cs" />
+    <Compile Include="EL\Game\clsDice.cs" />
+    <Compile Include="EL\Square\ChanceSquare.cs" />
+    <Compile Include="EL\Square\clsSquare.cs" />
+    <Compile Include="EL\Square\clsValueSquare.cs" />
+    <Compile Include="EL\Property\clsHouseHotel.cs" />
+    <Compile Include="EL\Property\clsLand.cs" />
+    <Compile Include="EL\Property\clsProperty.cs" />
+    <Compile Include="EL\Property\clsSpecialProperty.cs" />
+    <Compile Include="EL\Property\clsTrainStation.cs" />
+    <Compile Include="EL\Property\clsUltility.cs" />
+    <Compile Include="EL\Game\clsPlayer.cs" />
+    <Compile Include="EL\Game\clsToken.cs" />
+    <Compile Include="EL\Game\clsGame.cs" />
+    <Compile Include="Presentation\graphicalEntities\graphicalDice.cs" />
+    <Compile Include="Presentation\graphicalEntities\graphicalDicesManager.cs" />
+    <Compile Include="Presentation\graphicalEntities\grdLandsManager.cs" />
+    <Compile Include="Presentation\graphicalEntities\tokenImgsManager.cs" />
+    <Compile Include="Presentation\MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\graphicalEntities\myLandGrid.cs" />
+    <Compile Include="Presentation\graphicalEntities\myPolygon.cs" />
+    <Compile Include="Presentation\graphicalEntities\myStoryboard.cs" />
+    <Compile Include="Presentation\graphicalEntities\polygonsManager.cs" />
+    <Compile Include="Presentation\UC_CreateNewGame.xaml.cs">
+      <DependentUpon>UC_CreateNewGame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UC_JoinGame.xaml.cs">
+      <DependentUpon>UC_JoinGame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UC_LandInfo.xaml.cs">
+      <DependentUpon>UC_LandInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UC_MainWindowMenu.xaml.cs">
+      <DependentUpon>UC_MainWindowMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UIManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="Presentation\imgs\mainMenuBG.png" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Presentation\imgs\banner.png" />
+    <Resource Include="Presentation\imgs\board_monopoly.png" />
+    <Resource Include="Presentation\imgs\carToken1.png" />
+    <Resource Include="Presentation\imgs\carToken2.png" />
+    <Resource Include="Presentation\imgs\carToken3.png" />
+    <Resource Include="Presentation\imgs\carToken4.png" />
+    <Resource Include="Presentation\imgs\hotel.png" />
+    <Resource Include="Presentation\imgs\house.png" />
+    <Resource Include="Presentation\imgs\Monopoly.ico" />
+    <Resource Include="Presentation\imgs\monopoly.jpg" />
+    <Resource Include="Presentation\imgs\Monopoly_Dice1.png" />
+    <Resource Include="Presentation\imgs\Monopoly_Dice2.png" />
+    <Resource Include="Presentation\imgs\Monopoly_Dice3.png" />
+    <Resource Include="Presentation\imgs\Monopoly_Dice4.png" />
+    <Resource Include="Presentation\imgs\Monopoly_Dice5.png" />
+    <Resource Include="Presentation\imgs\Monopoly_Dice6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Presentation\MainMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\UC_CreateNewGame.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\UC_JoinGame.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\UC_LandInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\UC_MainWindowMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\ChanceCard_V2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Data\Square_V2.1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
